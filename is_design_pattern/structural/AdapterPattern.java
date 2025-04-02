@@ -1,6 +1,6 @@
 package structural;
 
-public class Adapter {
+public class AdapterPattern {
 
     /**
      * I pattern strutturali si occupano della composizione di classi e oggetti per formare strutture più grandi.
@@ -17,26 +17,27 @@ public class Adapter {
      * Quando si vuole riutilizzare diverse sottoclassi esistenti ma è impraticabile adattare la loro interfaccia modificando ogni sottoclasse
      */
 
-    interface Target {
-        void request();
+}
+
+interface Target {
+    void request();
+}
+
+class Adaptee {
+    public void specificRequest() {
+        System.out.println("Specific request");
+    }
+}
+
+class Adapter implements Target {
+    private Adaptee adaptee;
+
+    public Adapter(Adaptee adaptee) {
+        this.adaptee = adaptee;
     }
 
-    class Adaptee {
-        public void specificRequest() {
-            System.out.println("Specific request");
-        }
-    }
-
-    class Adapter implements Target {
-        private Adaptee adaptee;
-
-        public Adapter(Adaptee adaptee) {
-            this.adaptee = adaptee;
-        }
-
-        @Override
-        public void request() {
-            adaptee.specificRequest();
-        }
+    @Override
+    public void request() {
+        adaptee.specificRequest();
     }
 }

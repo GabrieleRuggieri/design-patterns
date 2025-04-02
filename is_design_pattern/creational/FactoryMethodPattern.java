@@ -1,6 +1,6 @@
 package creational;
 
-public class FactoryMethod {
+public class FactoryMethodPattern {
 
     /**
      * FACTORY METHOD

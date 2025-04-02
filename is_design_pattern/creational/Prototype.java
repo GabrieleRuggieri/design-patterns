@@ -16,6 +16,7 @@ interface Prototype extends Cloneable {
 }
 
 class ConcretePrototype implements Prototype {
+
     private String field;
 
     public ConcretePrototype(String field) {

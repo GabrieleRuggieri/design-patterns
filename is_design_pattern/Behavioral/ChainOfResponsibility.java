@@ -18,46 +18,47 @@ public class ChainOfResponsibility {
      * Quando l'insieme di oggetti che può gestire una richiesta deve essere specificato dinamicamente
      */
 
-    abstract class Handler {
-        protected Handler successor;
+}
 
-        public void setSuccessor(Handler successor) {
-            this.successor = successor;
-        }
+abstract class Handler {
+    protected Handler successor;
 
-        public abstract void handleRequest(int request);
+    public void setSuccessor(Handler successor) {
+        this.successor = successor;
     }
 
-    class ConcreteHandlerA extends Handler {
-        @Override
-        public void handleRequest(int request) {
-            if (request >= 0 && request < 10) {
-                System.out.println("ConcreteHandlerA handles request " + request);
-            } else if (successor != null) {
-                successor.handleRequest(request);
-            }
+    public abstract void handleRequest(int request);
+}
+
+class ConcreteHandlerA extends Handler {
+    @Override
+    public void handleRequest(int request) {
+        if (request >= 0 && request < 10) {
+            System.out.println("ConcreteHandlerA handles request " + request);
+        } else if (successor != null) {
+            successor.handleRequest(request);
         }
     }
+}
 
-    class ConcreteHandlerB extends Handler {
-        @Override
-        public void handleRequest(int request) {
-            if (request >= 10 && request < 20) {
-                System.out.println("ConcreteHandlerB handles request " + request);
-            } else if (successor != null) {
-                successor.handleRequest(request);
-            }
+class ConcreteHandlerB extends Handler {
+    @Override
+    public void handleRequest(int request) {
+        if (request >= 10 && request < 20) {
+            System.out.println("ConcreteHandlerB handles request " + request);
+        } else if (successor != null) {
+            successor.handleRequest(request);
         }
     }
+}
 
-    class ConcreteHandlerC extends Handler {
-        @Override
-        public void handleRequest(int request) {
-            if (request >= 20 && request < 30) {
-                System.out.println("ConcreteHandlerC handles request " + request);
-            } else if (successor != null) {
-                successor.handleRequest(request);
-            }
+class ConcreteHandlerC extends Handler {
+    @Override
+    public void handleRequest(int request) {
+        if (request >= 20 && request < 30) {
+            System.out.println("ConcreteHandlerC handles request " + request);
+        } else if (successor != null) {
+            successor.handleRequest(request);
         }
     }
 }
